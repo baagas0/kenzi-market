@@ -210,12 +210,17 @@ li {
 }
 
 .navbar-lg .navbar-brand {
-	padding: 15px 0 0;
+	padding: 0 0 0;
 	font-size: 28px;
 	font-weight: 700;
 	text-transform: uppercase;
 	color: #fff;
 	letter-spacing: 5px;
+}
+
+.brand img {
+	max-width: 80%;
+	margin-top: -27px;
 }
 
 

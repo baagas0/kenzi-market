@@ -54,9 +54,7 @@ $(document).ready(function () {
         `;
 
     $("#foods-container").append(food_dom);
-    $('select[name="food"]').append(
-      `<option value="${index}"> ${food.title} </option>`
-    );
+
     index++;
   }
 
@@ -64,17 +62,39 @@ $(document).ready(function () {
     if (!e.relatedTarget.dataset.index) {
       alert("Tidak dapat menemukan makanan.");
     }
-
     const index = e.relatedTarget.dataset.index;
-    $('select[name="food"]').val(index).change();
-    console.log(index);
+
+    const food = foods[index]
+    $('select[name="food"]').empty().val('0').change();
+    if (!food.size_food2 || !food.price2) {
+        $('select[name="food"]').append(`<option value="${index}" selected> ${food.title} - ${food.price1} </option>`);
+    } else {
+        $('select[name="food"]').append(`<option value="${index}|1" selected> ${food.title} (${food.size_food1}) - ${food.price1} </option>`);
+        $('select[name="food"]').append(`<option value="${index}|2"> ${food.title} (${food.size_food2}) - ${food.price2} </option>`);
+    }
+
+    
+    // $('select[name="food"]').val(index).change();
+    // console.log(index);
+  });
+
+  $('#modalContactForm').on('hidden.bs.modal', function () {
+    $('form[name="order"]')[0].reset();
+
+    $('#order-button').prop('disabled', false)
+    $('#order-button').html('Pesan <i class="fa fa-paper-plane-o"></i>')
   });
 
   $('form[name="order"]').on("submit", function (e) {
     e.preventDefault();
+
+
+    console.log('submited')
+    
     const name = $('input[name="name"]').val();
-    const food_index = $('select[name="food"]').val();
-    const food = foods[food_index];
+    const f = $('select[name="food"]').val();
+    const f_real = f.includes('|') ? f.split('|') : [f, 1]
+    const food = foods[f_real[0]];
 
     let whatsapp = $('input[name="whatsapp"]').val().toString();
     whatsapp = whatsapp.replace(/\D/g, "");
@@ -107,12 +127,18 @@ $(document).ready(function () {
       whatsapp +
       "\n" +
       "- Makanan yang Dipesan: " +
-      food.title +
+      food.title + (f.includes('|') ? ` (${food[`size_food${f_real[1]}`]})` : ``) + ' - ' + food[`price${f_real[1]}`] +
       "\n\n" +
       "Mohon menunggu beberapa saat hingga pesanan Anda selesai diproses. Kami akan segera menghubungi Anda jika ada informasi tambahan atau konfirmasi pengiriman.\n\n" +
       "Terima kasih atas kepercayaan Anda kepada Kenzi Market. Kami berkomitmen untuk memberikan pelayanan terbaik.\n\n" +
       "Hormat kami,\n" +
       "Tim Kenzi Market";
+
+    console.log(notifikasi);
+    // return;
+
+    $('#order-button').prop('disabled', true)
+    $('#order-button').text('Menunggu ...')
 
     $.ajax({
       type: "GET",
@@ -124,6 +150,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (data) {
+        $('#modalContactForm').modal('hide');
         Swal.fire({
           title: "Order Berhasil",
           text: "Periksa whatsapp anda",
@@ -131,6 +158,7 @@ $(document).ready(function () {
         });
       },
       error: function (err) {
+        $('#modalContactForm').modal('hide');
         Swal.fire({
           title: "Order Gagal",
           text: "Terjadi kesalahan saat memproses pesanan anda",

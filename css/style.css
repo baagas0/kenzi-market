@@ -2294,13 +2294,20 @@ blockquote.pull-right {
 }
 
 .price-new {
-	font-weight: bold;
+	/* font-weight: bold; */
 	color: #a82d49;
+}
+
+.price-new del {
+	color: gray;
 }
 
 .price-wrap h3 {
 	margin-top: 15px;
 	margin-bottom: 5px;
+	padding: 0;
+	width: 50%;
+	float: left;
 }
 
 

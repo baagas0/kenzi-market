@@ -440,19 +440,28 @@
 
                             <div class="clearfix space40"></div>
                             <form class="positioned" name="order" id="order" action="#" method="post">
-                                <input name="name" id="name" placeholder="Nama Lengkap" required type="text">
-                                <input name="whatsapp" id="whatsapp" placeholder="No Whatsapp" required type="text">
+                                <div class="row">
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <input name="name" id="name" placeholder="Nama Lengkap" required type="text" class="form-control" style="width: 100%; margin-bottom: 1.25rem;">
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <input name="whatsapp" id="whatsapp" placeholder="No Whatsapp" required type="text"  class="form-control" style="width: 100%; margin-bottom: 1.25rem;">
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <select name="food" id="select" required="required"  class="form-control" style="width: 100%; margin-bottom: 1.25rem;">
+                                            <!-- <option value="1"> Sandwich Ala Korea - Rp. 25.000 </option>
+                                            <option value="2"> Asninan Buah Kuah Lemon - Rp. 25.000 </option>
+                                            <option value="3"> Cincau Gula Aren - Rp. 25.000 </option> -->
+                                        </select>
+                                    </div>
+                                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                        <button type="submit" class="btn btn-primary btn-ico">Pesan<i class="fa fa-paper-plane-o"></i></button>
+                                    </div>
+                                </div>
 
-                                <select name="food" id="select" required="required">
-                                    <!-- <option value="1"> Sandwich Ala Korea - Rp. 25.000 </option>
-                                    <option value="2"> Asninan Buah Kuah Lemon - Rp. 25.000 </option>
-                                    <option value="3"> Cincau Gula Aren - Rp. 25.000 </option> -->
-                                </select>
 
 
 
-                                <button type="submit" class="btn btn-primary btn-ico">Pesan<i
-                                        class="fa fa-paper-plane-o"></i></button>
                             </form>
                             <div id="sendingMessage" class="statusMessage">
                                 <p><i class="fa fa-spin fa-cog"></i> Tunggu sebentar...</p>

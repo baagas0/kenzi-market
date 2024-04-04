@@ -218,8 +218,8 @@
                         sensasi tiada tara dalam setiap hidangan. Temukan cerita di balik setiap sajian dan hadirkan
                         pengalaman kuliner yang tak terlupakan bersama kami</p>
                 </div>
-                <div class="row">
-                    <div class="col-md-4">
+                <div class="row" id="foods-container">
+                    <!-- <div class="col-md-4">
                         <div class="card card-product">
                             <div class="img-wrap"><img src="images/produk1.png" alt="img"></div>
                             <div class="info-wrap">
@@ -267,7 +267,7 @@
                                     data-target="#modalContactForm">Pesan Sekarang</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -439,14 +439,14 @@
                             <h2>Pesan Makanan Anda Sekarang!</h2>
 
                             <div class="clearfix space40"></div>
-                            <form class="positioned" name="sentMessage" id="contactForm" action="#" method="post">
+                            <form class="positioned" name="order" id="order" action="#" method="post">
                                 <input name="name" id="name" placeholder="Nama Lengkap" required type="text">
                                 <input name="whatsapp" id="whatsapp" placeholder="No Whatsapp" required type="text">
 
-                                <select name="nafoodme" id="select" required="required">
-                                    <option value="1"> Sandwich Ala Korea - Rp. 25.000 </option>
+                                <select name="food" id="select" required="required">
+                                    <!-- <option value="1"> Sandwich Ala Korea - Rp. 25.000 </option>
                                     <option value="2"> Asninan Buah Kuah Lemon - Rp. 25.000 </option>
-                                    <option value="3"> Cincau Gula Aren - Rp. 25.000 </option>
+                                    <option value="3"> Cincau Gula Aren - Rp. 25.000 </option> -->
                                 </select>
 
 
@@ -482,6 +482,9 @@
 
 <!-- JAVASCRIPT =============================-->
 <script src="js/jquery.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script src="js/bootstrap.min.js"></script>
 <script src="js/vendors/slick/slick.min.js"></script>
 <script src="js/vendors/jquery.easing.min.js"></script>
@@ -491,3 +494,4 @@
 <script src="js/main.js"></script>
 <script src="js/vendors/mc/jquery.ketchup.all.min.js"></script>
 <script src="js/vendors/mc/main.js"></script>
+<script src="js/food.js"></script>

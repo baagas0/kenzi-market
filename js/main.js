@@ -1,10 +1,3 @@
-/*------------------------------------------------------------------
-Template Name: Foodera - Responsive Landing Page Template
-Version: 1.0
-Author: Thememor
-Author URL: https://themeforest.net/user/thememor
--------------------------------------------------------------------*/
-
 $(document).ready(function () {
   "use strict";
 

@@ -2150,6 +2150,7 @@ blockquote.pull-right {
 	margin-left: -210px;
 	width: 70%;
 	display: block;
+	width: 58.33333333%;
 }
 
 .footer {
@@ -2157,10 +2158,15 @@ blockquote.pull-right {
 	padding-top: 36px;
 }
 
+
 .discover {
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
 	display: block;
+}
+
+.discover h1 {
+	text-align: center;
 }
 
 .quote-discover {
@@ -2170,6 +2176,7 @@ blockquote.pull-right {
 	box-shadow: 0px 1px 3px 2px rgb(189, 186, 186);
 	margin-top: 10px;
 	margin-right: 37px;
+	width: 100%;
 }
 
 .quote-discover h3 {

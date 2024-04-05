@@ -2163,7 +2163,9 @@ blockquote.pull-right {
 	font-family: 'Times New Roman', Times, serif;
 	font-weight: bold;
 	display: block;
+	margin-left: 100px;
 }
+
 
 .discover h1 {
 	text-align: center;

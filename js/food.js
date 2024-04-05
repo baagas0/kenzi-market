@@ -16,7 +16,7 @@ $(document).ready(function () {
       size_food1: "400 ml",
       size_food2: "1 ltr",
       price1: "Rp.25.000",
-      price2: "Rp.50.000",
+      price2: "Rp.75.000",
     },
     {
       img: "images/produk3.png",
@@ -64,36 +64,40 @@ $(document).ready(function () {
     }
     const index = e.relatedTarget.dataset.index;
 
-    const food = foods[index]
-    $('select[name="food"]').empty().val('0').change();
+    const food = foods[index];
+    $('select[name="food"]').empty().val("0").change();
     if (!food.size_food2 || !food.price2) {
-        $('select[name="food"]').append(`<option value="${index}" selected> ${food.title} - ${food.price1} </option>`);
+      $('select[name="food"]').append(
+        `<option value="${index}" selected> ${food.title} - ${food.price1} </option>`
+      );
     } else {
-        $('select[name="food"]').append(`<option value="${index}|1" selected> ${food.title} (${food.size_food1}) - ${food.price1} </option>`);
-        $('select[name="food"]').append(`<option value="${index}|2"> ${food.title} (${food.size_food2}) - ${food.price2} </option>`);
+      $('select[name="food"]').append(
+        `<option value="${index}|1" selected> ${food.title} (${food.size_food1}) - ${food.price1} </option>`
+      );
+      $('select[name="food"]').append(
+        `<option value="${index}|2"> ${food.title} (${food.size_food2}) - ${food.price2} </option>`
+      );
     }
 
-    
     // $('select[name="food"]').val(index).change();
     // console.log(index);
   });
 
-  $('#modalContactForm').on('hidden.bs.modal', function () {
+  $("#modalContactForm").on("hidden.bs.modal", function () {
     $('form[name="order"]')[0].reset();
 
-    $('#order-button').prop('disabled', false)
-    $('#order-button').html('Pesan <i class="fa fa-paper-plane-o"></i>')
+    $("#order-button").prop("disabled", false);
+    $("#order-button").html('Pesan <i class="fa fa-paper-plane-o"></i>');
   });
 
   $('form[name="order"]').on("submit", function (e) {
     e.preventDefault();
 
+    console.log("submited");
 
-    console.log('submited')
-    
     const name = $('input[name="name"]').val();
     const f = $('select[name="food"]').val();
-    const f_real = f.includes('|') ? f.split('|') : [f, 1]
+    const f_real = f.includes("|") ? f.split("|") : [f, 1];
     const food = foods[f_real[0]];
 
     let whatsapp = $('input[name="whatsapp"]').val().toString();
@@ -127,7 +131,10 @@ $(document).ready(function () {
       whatsapp +
       "\n" +
       "- Makanan yang Dipesan: " +
-      food.title + (f.includes('|') ? ` (${food[`size_food${f_real[1]}`]})` : ``) + ' - ' + food[`price${f_real[1]}`] +
+      food.title +
+      (f.includes("|") ? ` (${food[`size_food${f_real[1]}`]})` : ``) +
+      " - " +
+      food[`price${f_real[1]}`] +
       "\n\n" +
       "Mohon menunggu beberapa saat hingga pesanan Anda selesai diproses. Kami akan segera menghubungi Anda jika ada informasi tambahan atau konfirmasi pengiriman.\n\n" +
       "Terima kasih atas kepercayaan Anda kepada Kenzi Market. Kami berkomitmen untuk memberikan pelayanan terbaik.\n\n" +
@@ -137,8 +144,8 @@ $(document).ready(function () {
     console.log(notifikasi);
     // return;
 
-    $('#order-button').prop('disabled', true)
-    $('#order-button').text('Menunggu ...')
+    $("#order-button").prop("disabled", true);
+    $("#order-button").text("Menunggu ...");
 
     $.ajax({
       type: "GET",
@@ -150,7 +157,7 @@ $(document).ready(function () {
       },
       cache: false,
       success: function (data) {
-        $('#modalContactForm').modal('hide');
+        $("#modalContactForm").modal("hide");
         Swal.fire({
           title: "Order Berhasil",
           text: "Periksa whatsapp anda",
@@ -158,7 +165,7 @@ $(document).ready(function () {
         });
       },
       error: function (err) {
-        $('#modalContactForm').modal('hide');
+        $("#modalContactForm").modal("hide");
         Swal.fire({
           title: "Order Gagal",
           text: "Terjadi kesalahan saat memproses pesanan anda",
